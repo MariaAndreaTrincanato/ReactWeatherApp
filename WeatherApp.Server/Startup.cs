@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using WeatherApp.Server.Configuration;
+﻿using WeatherApp.Server.Configuration;
 
 namespace WeatherApp.Server
 {
