@@ -1,5 +1,6 @@
 using System.Net.Http.Headers;
 using System.Text.Json;
+using Newtonsoft.Json;
 
 namespace WeatherApp.Domain.Http;
 
@@ -30,6 +31,6 @@ public static class ClientExtensions
         where TOutput : class
     {
         var responseString = await GetStringAsync(client, api);
-        return JsonSerializer.Deserialize<TOutput>(responseString);
+        return JsonConvert.DeserializeObject<TOutput>(responseString);
     }
 }

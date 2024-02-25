@@ -1,3 +1,4 @@
+using WeatherApp.Domain.Http;
 using WeatherApp.Server.Services;
 
 namespace WeatherApp.Server;
@@ -8,5 +9,6 @@ public static class ServiceCollectionExtensions
     public static void AddApiServices(this IServiceCollection services)
     {
         services.AddTransient<WeatherForecastDtoService>();
+        services.AddHttpClient<WeatherClient>();
     }
 }

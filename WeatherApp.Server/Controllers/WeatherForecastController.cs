@@ -5,7 +5,7 @@ using WeatherApp.Server.Services;
 namespace WeatherApp.Server.Controllers
 {
 	[ApiController]
-	[Route("[controller]")]
+	[Route("[controller]")] // api/v1/
 	public class WeatherForecastController : ControllerBase
 	{
 		private readonly ILogger<WeatherForecastController> _logger;

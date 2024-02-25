@@ -1,4 +1,6 @@
-﻿using WeatherApp.Core;
+﻿using Microsoft.Extensions.Options;
+using WeatherApp.Core;
+using WeatherApp.Core.Interfaces;
 using WeatherApp.Server.Configuration;
 
 namespace WeatherApp.Server
@@ -16,6 +18,8 @@ namespace WeatherApp.Server
 		{
 			var appSettingsSection = Configuration.GetSection("AppSettings");
 			services.Configure<AppSettings>(appSettingsSection);
+
+			services.AddSingleton<IAppSettings>(s => s.GetRequiredService<IOptions<AppSettings>>().Value);
 
 			services.AddControllers();
 			services.AddEndpointsApiExplorer();
