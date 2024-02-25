@@ -1,10 +1,11 @@
-﻿using WeatherApp.Server.Configuration;
+﻿using WeatherApp.Core;
+using WeatherApp.Server.Configuration;
 
 namespace WeatherApp.Server
 {
 	public class Startup
 	{
-		public IConfiguration Configuration { get; set; }
+		public IConfiguration Configuration { get;  set; }
 
 		public Startup(IConfiguration configuration)
 		{
@@ -19,6 +20,9 @@ namespace WeatherApp.Server
 			services.AddControllers();
 			services.AddEndpointsApiExplorer();
 			services.AddSwaggerGen();
+
+			services.AddApiServices(); // Configuration
+			services.AddCoreServices();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -36,7 +40,6 @@ namespace WeatherApp.Server
 			app.UseRouting();
 			//app.UseAuthorization();
 
-
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(
@@ -45,9 +48,6 @@ namespace WeatherApp.Server
 			});
 
 			//app.MapFallbackToFile("/index.html");
-
 		}
-
-
 	}
 }
