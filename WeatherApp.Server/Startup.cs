@@ -19,13 +19,14 @@ namespace WeatherApp.Server
 			var appSettingsSection = Configuration.GetSection("AppSettings");
 			services.Configure<AppSettings>(appSettingsSection);
 
-			services.AddSingleton<IAppSettings>(s => s.GetRequiredService<IOptions<AppSettings>>().Value);
+			services.AddSingleton<IAppSettings>(s => 
+				s.GetRequiredService<IOptions<AppSettings>>().Value);
 
 			services.AddControllers();
 			services.AddEndpointsApiExplorer();
 			services.AddSwaggerGen();
 
-			services.AddApiServices(); // Configuration
+			services.AddApiServices();
 			services.AddCoreServices();
 		}
 
@@ -34,7 +35,6 @@ namespace WeatherApp.Server
 			app.UseDefaultFiles();
 			app.UseStaticFiles();
 
-			// Configure the HTTP request pipeline.
 			if (env.IsDevelopment())
 			{
 				app.UseSwagger();
@@ -42,16 +42,12 @@ namespace WeatherApp.Server
 			}
 
 			app.UseRouting();
-			//app.UseAuthorization();
-
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllerRoute(
 									name: "default_v1",
 									pattern: "api/v1/{controller}/{action=Index}/{id?}");
 			});
-
-			//app.MapFallbackToFile("/index.html");
 		}
 	}
 }
