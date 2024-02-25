@@ -9,8 +9,8 @@ public static class UriHelper
         return $"{appSettings.BaseWeatherUrl}?appId={appSettings.WeatherApiKey}&units={units}&q={cityName}";
     }
     
-    public static string BuildForecastUri(IAppSettings appSettings, long id, string units)
+    public static string BuildForecastUri(IAppSettings appSettings, string cityName, string units)
     {
-        return $"{appSettings.BaseForecastUrl}?appId={appSettings.WeatherApiKey}&units={units}&id={id}";
+        return $"{appSettings.BaseForecastUrl}?appId={appSettings.WeatherApiKey}&units={units}&q={cityName}";
     }
 }

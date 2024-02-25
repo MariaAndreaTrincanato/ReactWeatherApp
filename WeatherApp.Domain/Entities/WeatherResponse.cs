@@ -12,7 +12,7 @@ public class WeatherResponse
     public int? Visibility { get; set; }
     public string? Base { get; set; }
     
-    public WeatherResponseItemWeather?[] Weather { get; set; }
+    public WeatherResponseItemWeather[] Weather { get; set; }
     public WeatherResponseItemSys? Sys { get; set; }
     public WeatherResponseItemWind? Wind { get; set; }
     public WeatherResponseItemClouds? Clouds { get; set; }

@@ -8,6 +8,7 @@
 			this.Country = string.Empty;
 		}
 
+		public DateTimeOffset? Timestamp { get; set; }
 		public decimal? Temperature { get; set; }
 		public decimal? TemperatureMin { get; set; }
 		public decimal? TemperatureMax { get; set; }

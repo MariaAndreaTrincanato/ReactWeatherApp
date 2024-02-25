@@ -21,14 +21,15 @@ public class UriHelperTests
     }
     
     [Theory]
-    [InlineData(12345, "metric", "baseForecastUrl?appId=000&units=metric&id=12345")]
-    public void UriHelper_BuildForecastUri(long id, string units, string expected)
+    [InlineData("udine", "metric", "baseForecastUrl?appId=000&units=metric&q=udine")]
+    [InlineData(null, null, "baseForecastUrl?appId=000&units=&q=")]
+    public void UriHelper_BuildForecastUri(string cityName, string units, string expected)
     {
         // Arrange
         var settings = new CustomAppSettings();
         
         // Act
-        var result = UriHelper.BuildForecastUri(settings, id, units);
+        var result = UriHelper.BuildForecastUri(settings, cityName, units);
 
         // Assert
         Assert.Equal(expected, result);

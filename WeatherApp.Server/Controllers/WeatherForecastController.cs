@@ -25,10 +25,10 @@ namespace WeatherApp.Server.Controllers
 			return await _weatherForecastDtoService.GetWeatherAsync(cityName, units);
 		}
 		
-		[HttpGet("[action]/{id}/{units}")]
-		public async Task<ForecastDto> GetForecast(long id, string units)
+		[HttpGet("[action]/{cityName}/{units}")]
+		public async Task<ForecastDto> GetForecast(string cityName, string units)
 		{
-			return await _weatherForecastDtoService.GetForecastAsync(id, units);
+			return await _weatherForecastDtoService.GetForecastAsync(cityName, units);
 		}
 	}
 }

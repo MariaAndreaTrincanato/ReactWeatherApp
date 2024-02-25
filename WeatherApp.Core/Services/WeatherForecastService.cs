@@ -27,9 +27,9 @@ public class WeatherForecastService : IWeatherForecastService
         return await client.GetWeather();
     }
 
-    public async Task<ForecastResponse?> GetForecastAsync(long id, string units = DataConst.DefaultUnits)
+    public async Task<ForecastResponse?> GetForecastAsync(string cityName, string units = DataConst.DefaultUnits)
     {
-        var uri = UriHelper.BuildForecastUri(_appSettings, id, units);
+        var uri = UriHelper.BuildForecastUri(_appSettings, cityName, units);
         var client = new WeatherClient(_httpClientFactory.CreateClient(), uri);
         return await client.GetForecast();
     }

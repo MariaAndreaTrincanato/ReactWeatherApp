@@ -8,6 +8,7 @@ public class ForecastResponse
     public int? Message { get; set; }
     public int? Cnt { get; set; }
     public ForecastResponseItem[] List { get; set; }
+    public ForecastResponseCity? City { get; set; }
 
     public ForecastResponse()
     {
@@ -15,18 +16,32 @@ public class ForecastResponse
     }
 }
 
+public class ForecastResponseCity
+{
+    public long? Id { get; set; }
+    public string? Name { get; set; }
+    public string? Country { get; set; }
+    public long? Sunrise { get; set; }
+    public long? Sunset { get; set; }
+}
+
 public class ForecastResponseItem
 {
-    public string? Dt { get; set; } = string.Empty;
+    public long? Dt { get; set; }
     public int? Visibility { get; set; }
     [JsonProperty("dt_txt")]
     public string? DtTxt { get; set; }
     
     public ForecastResponseItemMain? Main { get; set; }
-    public ForecastResponseItemWeather? Weather { get; set; }
+    public ForecastResponseItemWeather[] Weather { get; set; }
     public ForecastResponseItemClouds? Clouds { get; set; }
     public ForecastResponseItemWind? Wind { get; set; }
     public ForecastResponseItemSys? Sys { get; set; }
+
+    public ForecastResponseItem()
+    {
+        this.Weather = Array.Empty<ForecastResponseItemWeather>();
+    }
 }
 
 public class ForecastResponseItemMain

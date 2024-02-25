@@ -20,9 +20,9 @@ public class WeatherForecastDtoService
         return response.MapToWeatherDto();
     }
     
-    public async Task<ForecastDto> GetForecastAsync(long id, string units)
+    public async Task<ForecastDto> GetForecastAsync(string cityName, string units)
     {
-        var response = await _weatherForecastService.GetForecastAsync(id, units);
+        var response = await _weatherForecastService.GetForecastAsync(cityName, units);
         ArgumentNullException.ThrowIfNull(response, nameof(response));
         return response.MapToForecastDto();
     }
