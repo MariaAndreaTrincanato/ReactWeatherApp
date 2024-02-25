@@ -10,7 +10,12 @@ namespace WeatherApp.Server.Configuration
 		
 		[JsonProperty("baseWeatherUrl")]
 		public string BaseWeatherUrl { get; set; } = string.Empty;
+		
 		[JsonProperty("baseForecastUrl")]
 		public string BaseForecastUrl { get; set; } = string.Empty;
+		
+		[JsonProperty("iconsUrl")]
+		public string IconsUrl { get; set; } = string.Empty;
+		
 	}
 }

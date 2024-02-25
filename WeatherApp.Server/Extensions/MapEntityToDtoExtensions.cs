@@ -7,7 +7,7 @@ namespace WeatherApp.Server.Extensions;
 
 public static class MapEntityToDtoExtensions
 {
-    public static WeatherDto MapToWeatherDto(this WeatherResponse weather)
+    public static WeatherDto MapToWeatherDto(this WeatherResponse weather, string iconsUrl)
     {
         DateTimeOffset? sunrise = null;
         DateTimeOffset? sunset = null;
@@ -34,11 +34,16 @@ public static class MapEntityToDtoExtensions
         var description = new WeatherDescriptionDto();
         if (weather.Weather.Length > 0)
         {
+            string icon = DataConst.DefaultData;
+            if (weather.Weather.First().Icon is not null)
+            {
+                icon = $"{iconsUrl}{weather.Weather.First().Icon}@2x.png";
+            }
             description = new WeatherDescriptionDto
             {
                 Conditions = weather.Weather.First().Main ?? DataConst.DefaultData,
                 Description = weather.Weather.First().Description ?? DataConst.DefaultData,
-                Icon = weather.Weather.First().Icon ?? DataConst.DefaultData
+                Icon = icon
             };
         }
         
@@ -59,7 +64,7 @@ public static class MapEntityToDtoExtensions
         };
     }
     
-    public static ForecastDto MapToForecastDto(this ForecastResponse forecast)
+    public static ForecastDto MapToForecastDto(this ForecastResponse forecast, string iconsUrl)
     {
         return new ForecastDto
         {
@@ -76,11 +81,16 @@ public static class MapEntityToDtoExtensions
                 var description = new WeatherDescriptionDto();
                 if (x.Weather.Length > 0)
                 {
+                    string icon = DataConst.DefaultData;
+                    if (x.Weather.First().Icon is not null)
+                    {
+                        icon = $"{iconsUrl}{x.Weather.First().Icon}@2x.png";
+                    }
                     description = new WeatherDescriptionDto
                     {
                         Conditions = x.Weather.First().Main ?? DataConst.DefaultData,
                         Description = x.Weather.First().Description ?? DataConst.DefaultData,
-                        Icon = x.Weather.First().Icon ?? DataConst.DefaultData
+                        Icon = icon
                     };
                 }
                 
