@@ -41,4 +41,5 @@ public class CustomAppSettings : IAppSettings
     public string WeatherApiKey { get; set; } = "000";
     public string BaseWeatherUrl { get; set; } = "baseWeatherUrl";
     public string BaseForecastUrl { get; set; } = "baseForecastUrl";
+    public string IconsUrl { get; set; } = "";
 }
