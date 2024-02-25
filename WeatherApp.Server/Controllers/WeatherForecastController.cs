@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using WeatherApp.Server.Dtos;
+using WeatherApp.Server.Services;
 
 namespace WeatherApp.Server.Controllers
 {
@@ -8,21 +9,26 @@ namespace WeatherApp.Server.Controllers
 	public class WeatherForecastController : ControllerBase
 	{
 		private readonly ILogger<WeatherForecastController> _logger;
+		private readonly WeatherForecastDtoService _weatherForecastDtoService;
 
-		public WeatherForecastController(ILogger<WeatherForecastController> logger)
+		public WeatherForecastController(
+			ILogger<WeatherForecastController> logger,
+			WeatherForecastDtoService weatherForecastDtoService)
 		{
 			_logger = logger;
+			_weatherForecastDtoService = weatherForecastDtoService;
 		}
 
-		[HttpGet(Name = "GetWeatherForecast")]
-		public IEnumerable<WeatherForecastDto> Get()
+		[HttpGet("[action]/{cityName}/{units}")]
+		public async Task<WeatherDto> GetWeather(string cityName, string units)
 		{
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecastDto
-			{
-				Timestamp = DateTime.Now,
-				Temperature = Random.Shared.Next(-20, 55),
-			})
-			.ToArray();
+			return await _weatherForecastDtoService.GetWeatherAsync(cityName, units);
+		}
+		
+		[HttpGet("[action]/{id}/{units}")]
+		public async Task<ForecastDto> GetForecast(long id, string units)
+		{
+			return await _weatherForecastDtoService.GetForecastAsync(id, units);
 		}
 	}
 }

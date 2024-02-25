@@ -11,10 +11,17 @@ public class WeatherClient : ClientBase
         this._api = apiBaseAddress;
     }
 
-    public async Task<ForecastResponse?> GetWeatherForecast()
+    public async Task<ForecastResponse?> GetForecast()
     {
         ForecastResponse? response;
         response = await this.Client.GetAsync<ForecastResponse>(this._api);
+        return response;
+    }
+    
+    public async Task<WeatherResponse?> GetWeather()
+    {
+        WeatherResponse? response;
+        response = await this.Client.GetAsync<WeatherResponse>(this._api);
         return response;
     }
 }

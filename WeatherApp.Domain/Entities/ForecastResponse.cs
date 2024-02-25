@@ -7,29 +7,29 @@ public class ForecastResponse
     public string? Cod { get; set; }
     public int? Message { get; set; }
     public int? Cnt { get; set; }
-    public OpenWeatherResponseItem[] List { get; set; }
+    public ForecastResponseItem[] List { get; set; }
 
     public ForecastResponse()
     {
-        this.List = Array.Empty<OpenWeatherResponseItem>();
+        this.List = Array.Empty<ForecastResponseItem>();
     }
 }
 
-public class OpenWeatherResponseItem
+public class ForecastResponseItem
 {
     public string? Dt { get; set; } = string.Empty;
     public int? Visibility { get; set; }
     [JsonPropertyName("dt_txt")]
     public string? DtTxt { get; set; }
     
-    public OpenWeatherResponseItemMain? Main { get; set; }
-    public OpenWeatherResponseItemWeather? Weather { get; set; }
-    public OpenWeatherResponseItemClouds? Clouds { get; set; }
-    public OpenWeatherResponseItemWind? Wind { get; set; }
-    public OpenWeatherResponseItemSys? Sys { get; set; }
+    public ForecastResponseItemMain? Main { get; set; }
+    public ForecastResponseItemWeather? Weather { get; set; }
+    public ForecastResponseItemClouds? Clouds { get; set; }
+    public ForecastResponseItemWind? Wind { get; set; }
+    public ForecastResponseItemSys? Sys { get; set; }
 }
 
-public class OpenWeatherResponseItemMain
+public class ForecastResponseItemMain
 {
     [JsonPropertyName("temp")]
     public decimal? Temp { get; set; }
@@ -51,7 +51,7 @@ public class OpenWeatherResponseItemMain
     public decimal? TempKf { get; set; }
 }
 
-public class OpenWeatherResponseItemWeather
+public class ForecastResponseItemWeather
 {
     public long? Id { get; set; }
     public string? Main { get; set; }
@@ -59,19 +59,19 @@ public class OpenWeatherResponseItemWeather
     public string? Icon { get; set; }
 }
 
-public class OpenWeatherResponseItemClouds
+public class ForecastResponseItemClouds
 {
     public int? All { get; set; }
 }
 
-public class OpenWeatherResponseItemWind
+public class ForecastResponseItemWind
 {
     public decimal? Speed { get; set; }
     public int? Deg { get; set; }
     public decimal? Gust { get; set; }
 }
 
-public class OpenWeatherResponseItemSys
+public class ForecastResponseItemSys
 {
     public string? Pod { get; set; }
 }

@@ -1,8 +1,8 @@
 ﻿namespace WeatherApp.Server.Dtos
 {
-	public class WeatherForecastDto
+	public class WeatherDto
 	{
-		public WeatherForecastDto() { }
+		public WeatherDto() { }
 
 		public DateTime Timestamp { get; set; }
 		public decimal Temperature { get; set; }

@@ -4,5 +4,6 @@ namespace WeatherApp.Domain.Services;
 
 public interface IWeatherForecastService
 {
-    Task<ForecastResponse?> GetWeatherForecast(string cityName, string units);
+    Task<WeatherResponse?> GetWeatherAsync(string cityName, string units);
+    Task<ForecastResponse?> GetForecastAsync(long id, string units);
 }
