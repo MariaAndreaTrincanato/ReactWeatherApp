@@ -1,19 +1,37 @@
 ﻿#root {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 2rem;
-    text-align: center;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    color: white;
 }
 
-tr:nth-child(even) {
-    background: #F2F2F2;
+.searchArea {
+    background-color: var(--bg-blue);
+    height: 200px;
+    display: flex;
+    flex-direction: row;
 }
 
-tr:nth-child(odd) {
-    background: #FFF;
+.searchFields {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
+#searchBar {
+    width: 30%;
+    height: 35px;
+    padding: 0 5px;
+}
+
+#searchButton {
+    margin-left: 10px;
+    background-color: white;
+    border: none;
+    outline: none;
+}
+
+svg {
+    color: black;
 }
