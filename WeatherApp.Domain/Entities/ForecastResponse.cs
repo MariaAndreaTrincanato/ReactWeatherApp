@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace WeatherApp.Domain.Entities;
 
@@ -19,7 +19,7 @@ public class ForecastResponseItem
 {
     public string? Dt { get; set; } = string.Empty;
     public int? Visibility { get; set; }
-    [JsonPropertyName("dt_txt")]
+    [JsonProperty("dt_txt")]
     public string? DtTxt { get; set; }
     
     public ForecastResponseItemMain? Main { get; set; }
@@ -31,23 +31,20 @@ public class ForecastResponseItem
 
 public class ForecastResponseItemMain
 {
-    [JsonPropertyName("temp")]
     public decimal? Temp { get; set; }
-    [JsonPropertyName("feels_like")]
+    [JsonProperty("feels_like")]
     public decimal? FeelsLike { get; set; }
-    [JsonPropertyName("temp_min")]
+    [JsonProperty("temp_min")]
     public decimal? TempMin { get; set; }
-    [JsonPropertyName("temp_max")]
+    [JsonProperty("temp_max")]
     public decimal? TempMax { get; set; }
-    [JsonPropertyName("pressure")]
     public int? Pressure { get; set; }
-    [JsonPropertyName("sea_level")]
+    [JsonProperty("sea_level")]
     public int? SeaLevel { get; set; }
-    [JsonPropertyName("grnd_level")]
+    [JsonProperty("grnd_level")]
     public int? GrndLevel { get; set; }
-    [JsonPropertyName("humidity")]
     public decimal? Humidity { get; set; }
-    [JsonPropertyName("temp_kf")]
+    [JsonProperty("temp_kf")]
     public decimal? TempKf { get; set; }
 }
 

@@ -1,4 +1,4 @@
-using System.Text.Json.Serialization;
+using Newtonsoft.Json;
 
 namespace WeatherApp.Domain.Entities;
 
@@ -61,16 +61,13 @@ public class WeatherResponseItemCoord
 
 public class WeatherResponseItemMain
 {
-    [JsonPropertyName("temp")]
     public decimal? Temp { get; set; }
-    [JsonPropertyName("feels_like")]
+    [JsonProperty("feels_like")]
     public decimal? FeelsLike { get; set; }
-    [JsonPropertyName("temp_min")]
+    [JsonProperty("temp_min")]
     public decimal? TempMin { get; set; }
-    [JsonPropertyName("temp_max")]
+    [JsonProperty("temp_max")]
     public decimal? TempMax { get; set; }
-    [JsonPropertyName("pressure")]
     public int? Pressure { get; set; }
-    [JsonPropertyName("humidity")]
     public decimal? Humidity { get; set; }
 }
