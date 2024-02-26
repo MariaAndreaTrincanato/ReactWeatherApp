@@ -68,15 +68,11 @@ function WeatherCard(props) {
         }
 
         let existingItems = PersistenceService.getData(FAVORITES_KEY) ?? [];
-        console.log('existingItems', existingItems);
         if (existingItems.length > 0) {
-            const exists = existingItems.map(x => `${x.name},${x.country}`)
-                                            .includes(`${weather.name},${weather.country}`);
-            if (exists) {
-                const index = existingItems.indexOf(`${weather.name},${weather.country}`);
-                if (index > -1) {
-                    existingItems.splice(index, 1);
-                }
+            const index = existingItems.map(x => `${x.name},${x.country}`)
+                                            .indexOf(`${weather.name},${weather.country}`);
+            if (index > -1) {
+                existingItems.splice(index, 1);
                 setFavoriteIcon(faStarRegular);
             } else {
                 existingItems.push(weather)
@@ -93,16 +89,18 @@ function WeatherCard(props) {
     }
 
     function isFavorite(weather) {
+        let ret = false;
         if (weather === undefined || weather === null) {
-            return false;
+            return ret;
         }
 
         const existingItems = PersistenceService.getData(FAVORITES_KEY) ?? [];
         if (existingItems.length > 0) {
-            const includesName = existingItems.map(x => x.name).includes(weather.name);
-            return existingItems !== null && includesName;
+            const exists = existingItems.map(x => `${x.name},${x.country}`)
+                                            .includes(`${weather.name},${weather.country}`);
+            ret = exists;
         }
-        return false;
+        return ret;
     }
 
     // async function populateForecastData(location) {
