@@ -2,14 +2,33 @@
     width: 100vw;
     height: 100vh;
     margin: 0;
-    color: white;
+}
+
+.app {
+    height: 100%;
 }
 
 .searchArea {
     background-color: var(--bg-blue);
     height: 200px;
     display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.favorites {
+    margin-top: 60px;
+    display: flex;
     flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.infoArea {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    height: 100%;
 }
 
 .searchFields {
@@ -23,6 +42,10 @@
     width: 30%;
     height: 35px;
     padding: 0 5px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    font-size: 16px;
 }
 
 #searchButton {
@@ -32,6 +55,7 @@
     outline: none;
 }
 
-svg {
-    color: black;
+.favorites {
+    display: flex;
+    flex-wrap: wrap;
 }

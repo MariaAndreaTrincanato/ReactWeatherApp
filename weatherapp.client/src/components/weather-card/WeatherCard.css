@@ -1,0 +1,76 @@
+.weatherCard {
+    width: 40%;
+    height: 200px;
+    display: flex;
+    background-color: white;
+    margin-top: -60px;
+    border-radius: 10px;
+    padding: 10px 2rem 2rem 2rem;
+    box-shadow: 1px 1px 20px 10px rgba(25, 25, 25, 0.2);
+    flex-direction: column;
+}
+
+.mainCard {
+    align-self: center;
+    margin-top: -90px;
+}
+
+#favoriteIcon:hover {
+    cursor: pointer;
+}
+
+.cardRowName {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.cardRowNameText {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardRowNameText span:first-child {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.cardRowInfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.cardRowInfoDetail {
+    color: rgba(25, 25, 25, 0.5);
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+.cardRowInfoFooter {
+    display: flex;
+    margin-top: 5px;
+}
+
+.cardRowInfoFooter span:first-child {
+    margin-right: 10px;
+}
+
+.cardRowNameFavorite {
+    display: flex;
+    align-items: center;
+}
+
+.cardRowNameFavorite span {
+    margin-right: 10px;
+}
+
+.forecastAction {
+    color: blue;
+    text-decoration: underline;
+}
+
+.forecastAction:hover {
+    cursor: pointer;
+}
