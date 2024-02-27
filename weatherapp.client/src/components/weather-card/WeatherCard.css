@@ -8,6 +8,8 @@
     padding: 10px 2rem 2rem 2rem;
     box-shadow: 1px 1px 20px 10px rgba(25, 25, 25, 0.2);
     flex-direction: column;
+    margin-bottom: 90px;
+    margin-right: 20px;
 }
 
 .mainCard {
