@@ -59,3 +59,8 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.MuiFormControl-root {
+    background-color: white;
+    border-radius: 5px;
+}

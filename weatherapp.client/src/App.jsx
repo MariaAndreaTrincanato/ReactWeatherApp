@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import Autocomplete from '@mui/material/Autocomplete';
+import TextField from '@mui/material/TextField';
+
 import { PersistenceService } from './services/persistence-service';
 import { FAVORITES_KEY } from './helpers/constants';
 
@@ -11,6 +14,7 @@ function App() {
     const [favorites, setFavorites] = useState([]);
     const [weather, setWeather] = useState();
     const [location, setLocation] = useState('');
+    const [suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {
         drawFavorites();
@@ -25,21 +29,36 @@ function App() {
                 </div>
 
                 <div className='searchFields'>
-                    {/* TODO: must show favorite cities when searching*/}
-                    <input 
-                        id='searchBar' 
-                        type='text'
-                        placeholder='search'
+                    <Autocomplete
+                        freeSolo
+                        id='searchBar'
+                        disableClearable
+                        options={suggestions}
                         onInput={(i) => {
                             setWeather(undefined);
-                            setLocation(i.currentTarget.value)
-                        }}>
-                    </input>
+                            setLocation(i.target.value);
+                        }}
+                        onChange={(e) => {
+                            setWeather(undefined);
+                            setLocation(e.target.textContent);
+                        }}
+                        renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            placeholder='search city'
+                            InputProps={{
+                            ...params.InputProps,
+                            type: 'search',
+                            }}
+                        />
+                        )}
+                    />
+                    
                     <button 
                         id='searchButton'
                         onClick={() => populateWeatherData(location).then((data) => setWeather(data))}>
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
+                    </button>
                 </div>
             </div>
 
@@ -63,6 +82,9 @@ function App() {
     );
 
     async function populateWeatherData(name) {
+        if (name === '' || name === null || name === undefined) {
+            return;
+        }
         const response = await fetch(`weatherforecast/GetWeather/${name}/metric`);
         return await response.json();
     }
@@ -72,11 +94,14 @@ function App() {
         setFavorites([]);
         
         var promises = [];
+        var suggestions = [];
         if (existingItems.length > 0) {
             existingItems.forEach(element => {
+                suggestions.push(`${element.name},${element.country}`);
                 promises.push(populateWeatherData(`${element.name},${element.country}`));
             });
 
+            setSuggestions(suggestions);
             Promise.all(promises).then(weathers => setFavorites(weathers))
         }
     }
