@@ -1,6 +1,6 @@
 # WeatherApp
 
-This is an example of a web application with a frontend developed in React and a backend developed in .NET 7.
+This is an example of a web application with a frontend developed in React and a backend developed in .NET 8.
 
 *You need to create a https://openweathermap.org/ user with a new token to use this app. The token must replace the one you can find in the appSettings.json file.*
 
